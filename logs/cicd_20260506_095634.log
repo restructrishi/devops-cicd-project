@@ -1,0 +1,163 @@
+[INFO] Code Deploy Infra mode: true
+[2026-05-06 09:56:34] [INFO] ============================================================
+[2026-05-06 09:56:34] [INFO] IAM Automation Starting..
+[2026-05-06 09:56:34] [INFO] ============================================================
+[2026-05-06 09:56:34] [INFO] Step 1: Validating AWS credentials...
+[2026-05-06 09:56:34] [INFO]  AWS credentials valid - Running as: arn:aws:sts::567749996630:assumed-role/CICD_Automation_Role/i-0a906efc950ebc9ec
+[2026-05-06 09:56:34] [INFO]  AWS credentials validation successful
+[2026-05-06 09:56:34] [INFO] Step 2: Validating S3 bucket configuration...
+[2026-05-06 09:56:35] [INFO] S3 bucket gl05061145 does not exist, creating...
+[2026-05-06 09:56:35] [INFO] Ensuring S3 bucket 'gl05061145' exists...
+[2026-05-06 09:56:35] [INFO]  Created S3 bucket: gl05061145
+[2026-05-06 09:56:35] [INFO]    Enabled versioning
+[2026-05-06 09:56:35] [INFO]    Enabled encryption
+[2026-05-06 09:56:35] [INFO]    Added tags
+[2026-05-06 09:56:35] [INFO] Step 3: Validating customer managed policies...
+[2026-05-06 09:56:35] [INFO] Policy TomcatS3AccessPolicy does not exist, will create...
+[2026-05-06 09:56:35] [INFO] Policy CodeDeployS3AccessPolicy does not exist, will create...
+[2026-05-06 09:56:35] [INFO] Policy CodeBuildCodeConnectionsSourceCredentialsPolicy-helloworld-us-east-1 does not exist, will create...
+[2026-05-06 09:56:35] [INFO] Creating/updating policies...
+[2026-05-06 09:56:35] [INFO]  Created policy: TomcatS3AccessPolicy
+[2026-05-06 09:56:36] [INFO]  Created policy: CodeDeployS3AccessPolicy
+[2026-05-06 09:56:36] [INFO]  Created policy: CodeBuildCodeConnectionsSourceCredentialsPolicy-helloworld-us-east-1
+[2026-05-06 09:56:36] [INFO] Step 4: Validating IAM roles...
+[2026-05-06 09:56:36] [INFO] Role TomcatInstanceRole does not exist, will create...
+[2026-05-06 09:56:36] [INFO] Role JenkinsServerRole does not exist, will create...
+[2026-05-06 09:56:36] [INFO] Role CodeDeployInstanceRole does not exist, will create...
+[2026-05-06 09:56:36] [INFO] Role CodeDeployServiceRole does not exist, will create...
+[2026-05-06 09:56:36] [INFO] Role CodeBuildServiceRole does not exist, will create...
+[2026-05-06 09:56:36] [INFO] Role ec2role does not exist, will create...
+[2026-05-06 09:56:36] [INFO] Creating/updating roles...
+[2026-05-06 09:56:36] [INFO]  Created role: TomcatInstanceRole
+[2026-05-06 09:56:36] [INFO]    Attached policy CloudWatchAgentServerPolicy to TomcatInstanceRole
+[2026-05-06 09:56:36] [INFO]    Attached policy TomcatS3AccessPolicy to TomcatInstanceRole
+[2026-05-06 09:56:36] [INFO]    Attached policy AmazonS3ReadOnlyAccess to TomcatInstanceRole
+[2026-05-06 09:56:36] [INFO]    Attached 3 missing policy(ies) to TomcatInstanceRole
+[2026-05-06 09:56:36] [INFO]    No inline policies configured for TomcatInstanceRole
+[2026-05-06 09:56:36] [INFO]  Created role: JenkinsServerRole
+[2026-05-06 09:56:36] [INFO]    Attached policy AmazonS3FullAccess to JenkinsServerRole
+[2026-05-06 09:56:36] [INFO]    Attached policy AWSCodeBuildDeveloperAccess to JenkinsServerRole
+[2026-05-06 09:56:37] [INFO]    Attached policy AWSCodeDeployFullAccess to JenkinsServerRole
+[2026-05-06 09:56:37] [INFO]    Attached 3 missing policy(ies) to JenkinsServerRole
+[2026-05-06 09:56:37] [INFO]    Added inline policy 'JenkinsAutoScalingPolicy' for JenkinsServerRole
+[2026-05-06 09:56:37] [INFO]  Created role: CodeDeployInstanceRole
+[2026-05-06 09:56:37] [INFO]    Attached policy CloudWatchAgentServerPolicy to CodeDeployInstanceRole
+[2026-05-06 09:56:37] [INFO]    Attached policy AmazonEC2RoleforAWSCodeDeploy to CodeDeployInstanceRole
+[2026-05-06 09:56:37] [INFO]    Attached policy AmazonS3ReadOnlyAccess to CodeDeployInstanceRole
+[2026-05-06 09:56:37] [INFO]    Attached policy CodeDeployS3AccessPolicy to CodeDeployInstanceRole
+[2026-05-06 09:56:37] [INFO]    Attached 4 missing policy(ies) to CodeDeployInstanceRole
+[2026-05-06 09:56:37] [INFO]    No inline policies configured for CodeDeployInstanceRole
+[2026-05-06 09:56:37] [INFO]  Created role: CodeDeployServiceRole
+[2026-05-06 09:56:37] [INFO]    Attached policy AWSCodeDeployRole to CodeDeployServiceRole
+[2026-05-06 09:56:37] [INFO]    Attached 1 missing policy(ies) to CodeDeployServiceRole
+[2026-05-06 09:56:37] [INFO]    No inline policies configured for CodeDeployServiceRole
+[2026-05-06 09:56:37] [INFO]  Created role: CodeBuildServiceRole
+[2026-05-06 09:56:37] [INFO]    Attached policy AmazonS3FullAccess to CodeBuildServiceRole
+[2026-05-06 09:56:37] [INFO]    Attached policy CloudWatchLogsFullAccess to CodeBuildServiceRole
+[2026-05-06 09:56:37] [INFO]    Attached 2 missing policy(ies) to CodeBuildServiceRole
+[2026-05-06 09:56:38] [INFO]    Added inline policy 'CodeBuildGitHubConnectionPolicy' for CodeBuildServiceRole
+[2026-05-06 09:56:38] [INFO]  Created role: ec2role
+[2026-05-06 09:56:38] [INFO]    Attached policy AmazonKinesisFirehoseFullAccess to ec2role
+[2026-05-06 09:56:38] [INFO]    Attached policy AmazonSNSFullAccess to ec2role
+[2026-05-06 09:56:38] [INFO]    Attached 2 missing policy(ies) to ec2role
+[2026-05-06 09:56:38] [INFO]    No inline policies configured for ec2role
+[2026-05-06 09:56:38] [INFO] Step 5: Validating instance profiles...
+[2026-05-06 09:56:38] [INFO] Instance profile TomcatInstanceRole does not exist, will create...
+[2026-05-06 09:56:38] [INFO] Instance profile JenkinsServerRole does not exist, will create...
+[2026-05-06 09:56:38] [INFO] Instance profile CodeDeployInstanceRole does not exist, will create...
+[2026-05-06 09:56:38] [INFO] Instance profile EC2_multirole does not exist, will create...
+[2026-05-06 09:56:38] [INFO] Creating/updating instance profiles...
+[2026-05-06 09:56:38] [INFO]  Created instance profile: TomcatInstanceRole
+[2026-05-06 09:56:38] [INFO]    Attached role TomcatInstanceRole to instance profile
+[2026-05-06 09:56:38] [INFO]  Created instance profile: JenkinsServerRole
+[2026-05-06 09:56:38] [INFO]    Attached role JenkinsServerRole to instance profile
+[2026-05-06 09:56:38] [INFO]  Created instance profile: CodeDeployInstanceRole
+[2026-05-06 09:56:38] [INFO]    Attached role CodeDeployInstanceRole to instance profile
+[2026-05-06 09:56:38] [INFO]  Created instance profile: EC2_multirole
+[2026-05-06 09:56:39] [INFO]    Attached role ec2role to instance profile
+[2026-05-06 09:56:39] [INFO] Step 6: Performing final validation...
+[2026-05-06 09:56:41] [INFO] ============================================================
+[2026-05-06 09:56:41] [INFO] Step 7: Waiting for IAM propagation...
+[2026-05-06 09:56:41] [INFO] IAM changes need 30-60 seconds to propagate globally
+[2026-05-06 09:56:41] [INFO] This ensures CodeBuild/CodeDeploy can use the new permissions
+[2026-05-06 09:56:41] [INFO] ============================================================
+[2026-05-06 09:56:41] [INFO] Waiting... 45 seconds remaining
+[2026-05-06 09:56:46] [INFO] Waiting... 40 seconds remaining
+[2026-05-06 09:56:51] [INFO] Waiting... 35 seconds remaining
+[2026-05-06 09:56:56] [INFO] Waiting... 30 seconds remaining
+[2026-05-06 09:57:01] [INFO] Waiting... 25 seconds remaining
+[2026-05-06 09:57:06] [INFO] Waiting... 20 seconds remaining
+[2026-05-06 09:57:11] [INFO] Waiting... 15 seconds remaining
+[2026-05-06 09:57:16] [INFO] Waiting... 10 seconds remaining
+[2026-05-06 09:57:21] [INFO] Waiting... 5 seconds remaining
+[2026-05-06 09:57:26] [INFO]  IAM propagation wait completed
+[2026-05-06 09:57:26] [INFO] ============================================================
+[2026-05-06 09:57:26] [INFO]  All IAM resources validated and correctly configured
+[2026-05-06 09:57:26] [INFO]  IAM Automation completed successfully
+[2026-05-06 09:57:26] [INFO] ============================================================
+[INFO] Querying VPC information for: ecommerce-vpc
+[WARN] VPC 'ecommerce-vpc' not found (will be created)
+[INFO] VPC 'ecommerce-vpc' does not exist. Creating...
+[INFO] Created VPC 'ecommerce-vpc' with ID vpc-0044ab6fef09cb490
+[WARN] VPC_ID not set. VPC may have just been created. Refreshing...
+[INFO] Refreshing VPC information...
+[INFO] Querying VPC information for: ecommerce-vpc
+[INFO] Loaded VPC: Name=ecommerce-vpc, ID=vpc-0044ab6fef09cb490, CIDR=10.0.0.0/16
+[INFO] Using VPC: Name=ecommerce-vpc, ID=vpc-0044ab6fef09cb490 for subnet operations
+[INFO] Subnet 'public' does not exist. Creating in AZ us-east-1a...
+[INFO] Created subnet 'public' with ID subnet-0373fbe3185e9a2cc in AZ us-east-1a
+[INFO] Enabling auto-assign public IP for subnet 'public'...
+[INFO] Auto-assign public IP enabled for subnet 'public'
+[INFO] Subnet 'private' does not exist. Creating in AZ us-east-1b...
+[INFO] Created subnet 'private' with ID subnet-079e826e470742c61 in AZ us-east-1b
+[INFO] Subnet 'management' does not exist. Creating in AZ us-east-1c...
+[INFO] Created subnet 'management' with ID subnet-05fbcf1fd7fdedc6e in AZ us-east-1c
+[INFO] All three subnets configured successfully
+[WARN] VPC_ID not set. Refreshing...
+[INFO] Refreshing VPC information...
+[INFO] Querying VPC information for: ecommerce-vpc
+[INFO] Loaded VPC: Name=ecommerce-vpc, ID=vpc-0044ab6fef09cb490, CIDR=10.0.0.0/16
+[INFO] Using VPC: Name=ecommerce-vpc, ID=vpc-0044ab6fef09cb490 for IGW operations
+[INFO] Internet Gateway 'ecommerce-igw' does not exist. Creating...
+[INFO] Created Internet Gateway 'ecommerce-igw' with ID igw-081c0653acd2f05d7
+[INFO] Attaching Internet Gateway 'ecommerce-igw' to VPC 'ecommerce-vpc'...
+[INFO] Attached IGW 'ecommerce-igw' to VPC 'ecommerce-vpc'
+[WARN] VPC_ID not set. Refreshing...
+[INFO] Refreshing VPC information...
+[INFO] Querying VPC information for: ecommerce-vpc
+[INFO] Loaded VPC: Name=ecommerce-vpc, ID=vpc-0044ab6fef09cb490, CIDR=10.0.0.0/16
+[INFO] Configuring Security Groups for VPC: Name=ecommerce-vpc, ID=vpc-0044ab6fef09cb490, CIDR=10.0.0.0/16
+[INFO] Creating NAT security group: nat_sg
+[INFO] Created NAT SG nat_sg with ID sg-0c8eda4f6134f261f
+[INFO] Adding inbound rule: All traffic from VPC CIDR (10.0.0.0/16)
+{
+    "Return": true,
+    "SecurityGroupRules": [
+        {
+            "SecurityGroupRuleId": "sgr-0732905618baa8c5a",
+            "GroupId": "sg-0c8eda4f6134f261f",
+            "GroupOwnerId": "567749996630",
+            "IsEgress": false,
+            "IpProtocol": "-1",
+            "FromPort": -1,
+            "ToPort": -1,
+            "CidrIpv4": "10.0.0.0/16",
+            "SecurityGroupRuleArn": "arn:aws:ec2:us-east-1:567749996630:security-group-rule/sgr-0732905618baa8c5a"
+        }
+    ]
+}
+[INFO] NAT inbound rule configured
+[INFO] Configuring NAT outbound rules (allow all)...
+[WARN] Rule may already exist
+[INFO] NAT outbound rules configured
+[INFO] Security Groups setup complete
+[WARN] VPC_ID not set. Refreshing...
+[INFO] Refreshing VPC information...
+[INFO] Querying VPC information for: ecommerce-vpc
+[INFO] Loaded VPC: Name=ecommerce-vpc, ID=vpc-0044ab6fef09cb490, CIDR=10.0.0.0/16
+[INFO] Configuring NAT Instance: nat-instance
+[INFO] Using VPC: Name=ecommerce-vpc, ID=vpc-0044ab6fef09cb490
+[INFO] Using keypair: jenkins
+[INFO] Creating NAT instance 'nat-instance'...
+
+aws: [ERROR]: An error occurred (InvalidKeyPair.NotFound) when calling the RunInstances operation: The key pair 'jenkins' does not exist

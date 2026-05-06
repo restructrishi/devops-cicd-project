@@ -1,0 +1,36 @@
+cicd-automation/
+│
+├── main.sh                        # Main orchestrator - pipes output to log
+├── library.sh                     # Shell utility functions
+├── postgre_server.sh              # PostgreSQL server setup
+├── config.ini                     # Configuration file (VPC IDs, regions, etc.)
+├── readconfig.py                  # Config reader utility
+│
+├── logs/                          #  All logs stored here(main.sh and .py files)
+│   └── cicd.log  #  log files  
+│
+├── network/                       #  Network Infrastructure (Shell Scripts)
+│   ├── vpc.sh                     # VPC creation 
+│   ├── subnet.sh                  # Subnet creation
+│   ├── igw.sh                     # Internet Gateway
+│   ├── route_table.sh             # Route tables 
+│   ├── nat.sh                     # NAT Instance
+│   └── security_groups.sh         # Security groups (idempotent)
+│
+├── iam/                           #  IAM Automation
+│   ├── _init_.py                # Package marker
+│   └── iam_automation.py          # IAM role creation (idempotent)
+    |__ validators.py
+│
+└── jenkins/                       #  Infrastructure
+    ├── _init_.py                # Package marker
+    │
+    ├── main.py                    # CLI entry point with argparse
+    ├── aws_client.py              # AWS boto3 client initialization
+    ├── userdata.sh                # UserData script for LT and EC2
+    │
+    ├── validators.py              # ALL VALIDATORS (CHECK phase)
+    ├── services.py                #  ALL SERVICES (CREATE/FIX phase)
+    ├── jenkins_pipeline.py            # File_name_to_be_changed
+    │
+    └── jenkins_scripts.groovy     # Jenkins pipeline scripts

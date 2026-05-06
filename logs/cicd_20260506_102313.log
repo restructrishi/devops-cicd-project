@@ -1,0 +1,175 @@
+[INFO] Code Deploy Infra mode: true
+[2026-05-06 10:23:14] [INFO] ============================================================
+[2026-05-06 10:23:14] [INFO] IAM Automation Starting..
+[2026-05-06 10:23:14] [INFO] ============================================================
+[2026-05-06 10:23:14] [INFO] Step 1: Validating AWS credentials...
+[2026-05-06 10:23:14] [INFO]  AWS credentials valid - Running as: arn:aws:sts::567749996630:assumed-role/CICD_Automation_Role/i-0a906efc950ebc9ec
+[2026-05-06 10:23:14] [INFO]  AWS credentials validation successful
+[2026-05-06 10:23:14] [INFO] Step 2: Validating S3 bucket configuration...
+[2026-05-06 10:23:14] [INFO]  S3 bucket gl05061145 is correctly configured
+[2026-05-06 10:23:14] [INFO] Step 3: Validating customer managed policies...
+[2026-05-06 10:23:14] [INFO]  Policy TomcatS3AccessPolicy is correctly configured
+[2026-05-06 10:23:14] [INFO]  Policy CodeDeployS3AccessPolicy is correctly configured
+[2026-05-06 10:23:14] [INFO]  Policy CodeBuildCodeConnectionsSourceCredentialsPolicy-helloworld-us-east-1 is correctly configured
+[2026-05-06 10:23:14] [INFO] Step 4: Validating IAM roles...
+[2026-05-06 10:23:16] [INFO]  Role TomcatInstanceRole is correctly configured
+[2026-05-06 10:23:16] [INFO]  Role JenkinsServerRole is correctly configured
+[2026-05-06 10:23:16] [INFO]  Role CodeDeployInstanceRole is correctly configured
+[2026-05-06 10:23:16] [INFO]  Role CodeDeployServiceRole is correctly configured
+[2026-05-06 10:23:16] [INFO] Role CodeBuildServiceRole needs configuration updates...
+[2026-05-06 10:23:16] [INFO]  Role ec2role is correctly configured
+[2026-05-06 10:23:16] [INFO] Creating/updating roles...
+[2026-05-06 10:23:16] [INFO]  Role TomcatInstanceRole already exists
+[2026-05-06 10:23:16] [INFO]    All managed policies correctly configured for TomcatInstanceRole
+[2026-05-06 10:23:16] [INFO]    No inline policies configured for TomcatInstanceRole
+[2026-05-06 10:23:16] [INFO]  Role JenkinsServerRole already exists
+[2026-05-06 10:23:16] [INFO]    All managed policies correctly configured for JenkinsServerRole
+[2026-05-06 10:23:16] [INFO]  Role CodeDeployInstanceRole already exists
+[2026-05-06 10:23:16] [INFO]    All managed policies correctly configured for CodeDeployInstanceRole
+[2026-05-06 10:23:16] [INFO]    No inline policies configured for CodeDeployInstanceRole
+[2026-05-06 10:23:16] [INFO]  Role CodeDeployServiceRole already exists
+[2026-05-06 10:23:16] [INFO]    All managed policies correctly configured for CodeDeployServiceRole
+[2026-05-06 10:23:16] [INFO]    No inline policies configured for CodeDeployServiceRole
+[2026-05-06 10:23:17] [INFO]  Role CodeBuildServiceRole already exists
+[2026-05-06 10:23:17] [INFO]    All managed policies correctly configured for CodeBuildServiceRole
+[2026-05-06 10:23:17] [INFO]    Updated inline policy 'CodeBuildGitHubConnectionPolicy' for CodeBuildServiceRole
+[2026-05-06 10:23:17] [INFO]  Role ec2role already exists
+[2026-05-06 10:23:17] [INFO]    All managed policies correctly configured for ec2role
+[2026-05-06 10:23:17] [INFO]    No inline policies configured for ec2role
+[2026-05-06 10:23:17] [INFO] Step 5: Validating instance profiles...
+[2026-05-06 10:23:17] [INFO]  Instance profile TomcatInstanceRole is correctly configured
+[2026-05-06 10:23:17] [INFO]  Instance profile JenkinsServerRole is correctly configured
+[2026-05-06 10:23:17] [INFO]  Instance profile CodeDeployInstanceRole is correctly configured
+[2026-05-06 10:23:17] [INFO]  Instance profile EC2_multirole is correctly configured
+[2026-05-06 10:23:17] [INFO] Step 6: Performing final validation...
+[2026-05-06 10:23:20] [INFO] ============================================================
+[2026-05-06 10:23:20] [INFO] Step 7: Waiting for IAM propagation...
+[2026-05-06 10:23:20] [INFO] IAM changes need 30-60 seconds to propagate globally
+[2026-05-06 10:23:20] [INFO] This ensures CodeBuild/CodeDeploy can use the new permissions
+[2026-05-06 10:23:20] [INFO] ============================================================
+[2026-05-06 10:23:20] [INFO] Waiting... 45 seconds remaining
+[2026-05-06 10:23:25] [INFO] Waiting... 40 seconds remaining
+[2026-05-06 10:23:30] [INFO] Waiting... 35 seconds remaining
+[2026-05-06 10:23:35] [INFO] Waiting... 30 seconds remaining
+[2026-05-06 10:23:40] [INFO] Waiting... 25 seconds remaining
+[2026-05-06 10:23:45] [INFO] Waiting... 20 seconds remaining
+[2026-05-06 10:23:50] [INFO] Waiting... 15 seconds remaining
+[2026-05-06 10:23:55] [INFO] Waiting... 10 seconds remaining
+[2026-05-06 10:24:00] [INFO] Waiting... 5 seconds remaining
+[2026-05-06 10:24:05] [INFO]  IAM propagation wait completed
+[2026-05-06 10:24:05] [INFO] ============================================================
+[2026-05-06 10:24:05] [INFO]  All IAM resources validated and correctly configured
+[2026-05-06 10:24:05] [INFO]  IAM Automation completed successfully
+[2026-05-06 10:24:05] [INFO] ============================================================
+[INFO] Querying VPC information for: ecommerce-vpc
+[INFO] Loaded VPC: Name=ecommerce-vpc, ID=vpc-0044ab6fef09cb490, CIDR=10.0.0.0/16
+[INFO] VPC 'ecommerce-vpc' exists with ID vpc-0044ab6fef09cb490
+[INFO] VPC CIDR validated: 10.0.0.0/16
+[INFO] Using VPC: Name=ecommerce-vpc, ID=vpc-0044ab6fef09cb490 for subnet operations
+[INFO] Subnet 'public' exists with ID subnet-0373fbe3185e9a2cc
+[INFO] CIDR and AZ match for subnet 'public': 10.0.1.0/24, us-east-1a
+[INFO] Auto-assign public IP already enabled for subnet 'public'
+[INFO] Subnet 'private' exists with ID subnet-079e826e470742c61
+[INFO] CIDR and AZ match for subnet 'private': 10.0.2.0/24, us-east-1b
+[INFO] Subnet 'management' exists with ID subnet-05fbcf1fd7fdedc6e
+[INFO] CIDR and AZ match for subnet 'management': 10.0.3.0/24, us-east-1c
+[INFO] All three subnets configured successfully
+[INFO] Using VPC: Name=ecommerce-vpc, ID=vpc-0044ab6fef09cb490 for IGW operations
+[INFO] Internet Gateway 'ecommerce-igw' exists with ID igw-081c0653acd2f05d7
+[INFO] Internet Gateway 'ecommerce-igw' is already attached to VPC 'ecommerce-vpc'
+[INFO] Configuring Security Groups for VPC: Name=ecommerce-vpc, ID=vpc-0044ab6fef09cb490, CIDR=10.0.0.0/16
+[INFO] NAT Security group nat_sg already exists with ID sg-0c8eda4f6134f261f
+[INFO] Adding inbound rule: All traffic from VPC CIDR (10.0.0.0/16)
+[WARN] Rule may already exist
+[INFO] NAT inbound rule configured
+[INFO] Configuring NAT outbound rules (allow all)...
+[WARN] Rule may already exist
+[INFO] NAT outbound rules configured
+[INFO] Security Groups setup complete
+[INFO] Configuring NAT Instance: nat-instance
+[INFO] Using VPC: Name=ecommerce-vpc, ID=vpc-0044ab6fef09cb490
+[INFO] Using keypair: jenkins
+[INFO] NAT instance 'nat-instance' already exists with ID i-0022e2fb064ff6610
+[INFO] Current state: running
+[INFO] Source/destination check already disabled
+[INFO] NAT instance setup complete: i-0022e2fb064ff6610
+[INFO] NAT Configuration:
+[INFO]   - IP Forwarding: Enabled
+[INFO]   - Send Redirects: Disabled
+[INFO]   - iptables MASQUERADE: Configured
+[INFO]   - Source/Dest Check: Disabled
+[INFO] Configuring Route Tables for VPC: Name=ecommerce-vpc, ID=vpc-0044ab6fef09cb490
+[INFO] Route Table 'public_rt' already exists with ID rtb-07c7c48afc83523b7
+[INFO] Route Table 'private_rt' already exists with ID rtb-0a8d912b891a2c05d
+[INFO] Route Table 'mgmt_rt' already exists with ID rtb-049839d69cb2f90f4
+[INFO] Subnet subnet-0373fbe3185e9a2cc already associated with Route Table rtb-07c7c48afc83523b7
+[INFO] Subnet subnet-079e826e470742c61 already associated with Route Table rtb-0a8d912b891a2c05d
+[INFO] Subnet subnet-05fbcf1fd7fdedc6e already associated with Route Table rtb-049839d69cb2f90f4
+[INFO] Default route to IGW igw-081c0653acd2f05d7 already exists in RT rtb-07c7c48afc83523b7
+[INFO] Default route to NAT i-0022e2fb064ff6610 already exists in RT rtb-0a8d912b891a2c05d
+[INFO] Default route to IGW igw-081c0653acd2f05d7 already exists in RT rtb-049839d69cb2f90f4
+[INFO] All route tables configured successfully
+Running in mode: true
+[2026-05-06 10:24:44] [INFO] ============================================================
+[2026-05-06 10:24:44] [INFO] Jenkins Infrastructure Automation Starting
+[2026-05-06 10:24:44] [INFO] Mode: Week 1 - EC2 + CodeDeploy
+[2026-05-06 10:24:44] [INFO] ============================================================
+[2026-05-06 10:24:44] [INFO] ============================================================
+[2026-05-06 10:24:45] [INFO] AWS clients initialized successfully
+[2026-05-06 10:24:45] [INFO]   Running as: arn:aws:sts::567749996630:assumed-role/CICD_Automation_Role/i-0a906efc950ebc9ec
+[2026-05-06 10:24:45] [INFO]   Account ID: 567749996630
+[2026-05-06 10:24:45] [INFO]   Region: us-east-1
+[2026-05-06 10:24:45] [INFO] Step 0: Validating IAM resources...
+[2026-05-06 10:24:45] [INFO]  S3 bucket exists: gl05061145
+[2026-05-06 10:24:45] [INFO]  IAM role exists: JenkinsServerRole
+[2026-05-06 10:24:45] [INFO]  IAM role exists: CodeDeployInstanceRole
+[2026-05-06 10:24:45] [INFO]  IAM role exists: CodeDeployServiceRole
+[2026-05-06 10:24:45] [INFO]  IAM role exists: CodeBuildServiceRole
+[2026-05-06 10:24:45] [INFO]  IAM role exists: TomcatInstanceRole
+[2026-05-06 10:24:45] [INFO]  Instance profile exists: JenkinsServerRole
+[2026-05-06 10:24:45] [INFO]  Instance profile exists: CodeDeployInstanceRole
+[2026-05-06 10:24:45] [INFO]  Instance profile exists: TomcatInstanceRole
+[2026-05-06 10:24:45] [INFO]  All IAM resources validated successfully
+[2026-05-06 10:24:45] [INFO] Step 1: Validating network infrastructure...
+[2026-05-06 10:24:45] [INFO] VPC validated: vpc-0044ab6fef09cb490 (10.0.0.0/16)
+[2026-05-06 10:24:45] [INFO] Subnet validated: subnet-0373fbe3185e9a2cc (10.0.1.0/24)
+[2026-05-06 10:24:45] [INFO] Internet Gateway validated: igw-081c0653acd2f05d7
+[2026-05-06 10:24:45] [INFO] Route table validated: rtb-07c7c48afc83523b7
+[2026-05-06 10:24:45] [INFO]  Network infrastructure validation successful
+[2026-05-06 10:24:45] [INFO] Step 2: Creating key pair...
+[2026-05-06 10:24:45] [INFO] Ensuring key pair 'jenkins' exists...
+[2026-05-06 10:24:45] [INFO]  Key pair 'jenkins' already exists
+[2026-05-06 10:24:45] [WARNING] ⚠ Private key file not found at /home/ubuntu/Downloads/jenkins.pem.
+ To obtain a new private key you must delete the existing key pair in AWS and re-run the script to create/download a new key.
+  - If you delete the key pair, existing EC2 instances launched with the old key will NOT automatically accept the new key.
+  - To regain access to an existing instance you can use AWS Session Manager (SSM), or modify the root volume via a helper instance.
+See documentation or ask for help if you need step-by-step guidance.
+[2026-05-06 10:24:45] [INFO] Step 3: Skipping IAM propagation wait (already waited during network setup)
+[2026-05-06 10:24:45] [INFO] Step 4: Creating security groups...
+[2026-05-06 10:24:45] [INFO] Creating security groups in VPC: vpc-0044ab6fef09cb490
+[2026-05-06 10:24:45] [INFO]  Security group JenkinsServerSG already exists: sg-0d201d5e26035ce18
+[2026-05-06 10:24:45] [INFO]  Security group ApplicationServerSG already exists: sg-0c0c346a0ecdf0ee0
+[2026-05-06 10:24:45] [INFO] Step 5: Getting latest Debian AMI...
+[2026-05-06 10:24:46] [INFO] Using Debian AMI: ami-01afb95a7178475bf
+[2026-05-06 10:24:46] [INFO] Step 6: Preparing userdata scripts...
+[2026-05-06 10:24:46] [INFO] Substituted variables in tomcat_codedeploy userdata: AWS_REGION
+[2026-05-06 10:24:46] [INFO] Tomcat CodeDeploy UserData size: 452 bytes (limit: 16384)
+[2026-05-06 10:24:46] [INFO] Substituted variables in jenkins userdata: JENKINS_USER
+[2026-05-06 10:24:46] [INFO] Substituted 1 sensitive variable(s)
+[2026-05-06 10:24:46] [INFO] Jenkins UserData size: 6670 bytes (limit: 16384)
+[2026-05-06 10:24:46] [INFO] Step 7: Creating Jenkins instance...
+[2026-05-06 10:24:46] [INFO]  Jenkins instance already exists: i-0e8f9976cc1469af8 (State: running)
+[2026-05-06 10:24:46] [INFO] Jenkins instance public IP: 13.221.131.21
+[2026-05-06 10:24:46] [INFO] Jenkins URL: http://13.221.131.21:8080
+[2026-05-06 10:24:46] [INFO] Step 8: Verifying CodeStar connection...
+[2026-05-06 10:24:46] [INFO] Found connection 'github-connection': arn:aws:codeconnections:us-east-1:567749996630:connection/1b7648b6-4474-4081-9b4f-9a8c53c30f89
+[2026-05-06 10:24:46] [INFO] Connection status: AVAILABLE
+[2026-05-06 10:24:46] [INFO]  CodeStar connection is ready
+[2026-05-06 10:24:46] [INFO] Step 9: Creating CodeBuild project...
+[2026-05-06 10:24:46] [INFO] Creating CodeBuild project: helloworld
+[2026-05-06 10:24:46] [ERROR] Error creating CodeBuild project: An error occurred (OAuthProviderException) when calling the CreateProject operation: User is not authorized to access connection arn:aws:codeconnections:us-east-1:567749996630:connection/1b7648b6-4474-4081-9b4f-9a8c53c30f89
+[2026-05-06 10:24:46] [ERROR] Failed to create CodeBuild project
+[2026-05-06 10:24:46] [INFO] ============================================================
+[2026-05-06 10:24:46] [ERROR]  Jenkins Infrastructure automation failed
+[2026-05-06 10:24:46] [INFO] ============================================================
+[ERROR] Jenkins infrastructure automation failed! Check logs/cicd_20260506_102313.log for details
